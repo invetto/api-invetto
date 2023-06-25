@@ -1,0 +1,1 @@
+export const mongoURI = "mongodb+srv://invetto:Password123@cluster0.2aodp4m.mongodb.net/";

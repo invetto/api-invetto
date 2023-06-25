@@ -1,0 +1,5 @@
+{
+  "editor.cursorSmoothCaretAnimation": "explicit",
+  "editor.cursorStyle": "line-thin",
+  "editor.minimap.autohide": true
+}
