@@ -2,7 +2,7 @@ import { Controller, Post, Get, Body, Query } from '@nestjs/common';
 import { WishesService } from '../services/wishes.service';
 import { Wish } from '../interfaces/wish.interface';
 import { CreateWishDto } from '../dto/create-wish.dto';
-import { errorResponse, successResponse } from 'src/utils/helper';
+import { errorResponse, successResponse } from '../../../utils/helper';
 
 @Controller()
 export class WishesController {
