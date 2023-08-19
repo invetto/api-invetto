@@ -28,6 +28,11 @@ export class BridesService {
       .join(".")
       .toUpperCase();
 
+    // const checkCode = this.findBrideByCode(code);
+    // if (checkCode) {
+    //   throw new error("nama yang anda masukan sudah ada")
+    // }
+
     return await this.brideModel.create({
       ...create,
       ...hundleUuid(),

@@ -1,4 +1,4 @@
-import { IsString, ValidateNested, IsArray } from 'class-validator';
+import { IsString, Validate, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ParentInfoDto } from './create-parant-info.dto';
 
