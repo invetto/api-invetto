@@ -6,7 +6,7 @@ import { setupSwagger } from './config/swager.config';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
-  setupSwagger(app)
+  setupSwagger(app);
   await app.listen(3000);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }

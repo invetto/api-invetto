@@ -16,7 +16,10 @@ import { CustomValidationPipe } from '../../../utils/validation/custom-validatio
     ]),
     BridesModule
   ],
-  providers: [WeddingInformationService, CustomValidationPipe],
+  providers: [
+    WeddingInformationService,
+    // CustomValidationPipe
+  ],
   controllers: [WeddingInformationController]
 })
 export class WeddingInformationModule { }

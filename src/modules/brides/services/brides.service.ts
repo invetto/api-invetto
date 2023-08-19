@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
 
@@ -17,7 +17,7 @@ export class BridesService {
   ) { }
 
   async create(create: CreateBrideDto): Promise<BrideInterface> {
-    const { bride_name } = create
+    const { bride_name } = create;
 
     const code = bride_name.replace(/&/g, '-')
       .replace(/\s+/g, '')
@@ -28,31 +28,26 @@ export class BridesService {
       .join(".")
       .toUpperCase();
 
-    // const checkCode = this.findBrideByCode(code);
-    // if (checkCode) {
-    //   throw new error("nama yang anda masukan sudah ada")
-    // }
-
     return await this.brideModel.create({
       ...create,
       ...hundleUuid(),
       bride_code: code,
       bride_initial: initial
-    })
+    });
   }
 
-  async findBrideByCode(brideCode: string): Promise<BrideInterface> {
+  async findBrideByCode(brideCode: string): Promise<BrideInterface | null> {
     const brideInfo = await this.brideModel.findOne({
       bride_code: brideCode
-    })
-      .exec();
+    }).exec();
 
     if (!brideInfo) {
-      // return notFoundRespone();
+      throw new BadRequestException("data tidak ada adada")
     }
 
     return brideInfo;
   }
+
 
   async findOneById(id: ObjectId): Promise<BrideInterface | any> {
     const weddingInfo = await this.brideModel.findById(id).exec();

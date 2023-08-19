@@ -21,10 +21,10 @@ import { ValidationInterceptor } from './utils/interceptor/validation.intercepto
   controllers: [AppController],
   providers: [
     AppService,
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: TransformResponseInterceptor,
-    },
+    // {
+    //   provide: APP_INTERCEPTOR,
+    //   useClass: TransformResponseInterceptor,
+    // },
     {
       provide: APP_PIPE,
       useClass: ValidationPipe,

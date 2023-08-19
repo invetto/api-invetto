@@ -1,5 +1,4 @@
-import { HttpException, NotFoundException } from "@nestjs/common"
-import { catchError, throwError } from "rxjs";
+import { BadRequestException, HttpException } from "@nestjs/common"
 import * as uuid from 'uuid';
 
 export const successResponse = ({ data, message = 'success', statusCode = 200 }) => {
@@ -25,13 +24,16 @@ export const hundleUuid = () => {
   };
 }
 
-// export const notFoundRespone = (message = 'Data Not Found', statusCode = 403, data = null) => {
-//   throw new HttpException({
-//     success: false,
-//     statusCode: statusCode,
-//     message: data ? data + message : message,
-//   }, statusCode)
-// }
+export function errorMessage(error: BadRequestException) {
+  const { message, error: errorType, status, name } = error.getResponse() as any;
+
+  return {
+    message,
+    error: errorType,
+    status,
+    name,
+  };
+}
 
 export const notFoundRespone = (data = null, message = "Data Not Found", statusCode = 403,) => {
   // const errorMessage = `data ${data} not found`;
