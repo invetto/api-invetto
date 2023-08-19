@@ -30,7 +30,7 @@ export class Bride extends Document implements BrideInterface {
       father_of_boy: { type: String, required: true },
     },
   })
-  parents: ParentInterface[];
+  parents: ParentInterface;
 }
 
 export const BrideSchema = SchemaFactory.createForClass(Bride);

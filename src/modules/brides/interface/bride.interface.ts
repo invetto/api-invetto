@@ -8,6 +8,6 @@ export interface BrideInterface extends Document {
   boy_name: string;
   bride_code: string;
   bride_initial: string;
-  parents: ParentInterface[];
-  information?: WeddingInformationInterface[]
+  parents: ParentInterface;
+  information?: WeddingInformationInterface
 }
