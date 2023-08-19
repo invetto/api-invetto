@@ -16,7 +16,7 @@ export class BridesService {
     private readonly brideModel: Model<Bride>
   ) { }
 
-  create(create: CreateBrideDto): Promise<BrideInterface> {
+  async create(create: CreateBrideDto): Promise<BrideInterface> {
     const { bride_name } = create
 
     const code = bride_name.replace(/&/g, '-')
@@ -28,7 +28,7 @@ export class BridesService {
       .join(".")
       .toUpperCase();
 
-    return this.brideModel.create({
+    return await this.brideModel.create({
       ...create,
       ...hundleUuid(),
       bride_code: code,

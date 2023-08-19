@@ -6,8 +6,8 @@ export class CreateBrideDto {
   @IsString()
   bride_name: string;
 
-  @IsString()
-  bride_code: string;
+  // @IsString()
+  bride_code?: string;
 
   @IsString()
   girl_name: string;
@@ -16,7 +16,6 @@ export class CreateBrideDto {
   boy_name: string;
 
   @ValidateNested({ each: true })
-  @IsArray()
   @Type(() => ParentInfoDto)
-  parents: ParentInfoDto[];
+  parents: ParentInfoDto
 }

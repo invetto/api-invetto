@@ -10,7 +10,7 @@ export class BridesController {
   ) { }
 
   @Post()
-  async createBride(@Body() createBrideDto: CreateBrideDto): Promise<BrideInterface | any> {
+  async createBride(@Body() createBrideDto: CreateBrideDto): Promise<BrideInterface> {
     try {
       return await this.bridesService.create(createBrideDto);
     } catch (error) {
