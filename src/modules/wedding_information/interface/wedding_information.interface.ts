@@ -3,7 +3,6 @@ import { BrideInterface } from 'src/modules/brides/interface/bride.interface';
 import { ParentInterface } from 'src/modules/brides/interface/parent.interface';
 
 export interface WeddingInformationInterface extends Document {
-  _id?: ObjectId;
   wedding_akad: string;
   wedding_akad_time: string;
   wedding_resepsi: string;
@@ -18,13 +17,12 @@ export interface WeddingInformationInterface extends Document {
 }
 
 export interface BrideWeddingInfoInterface {
-  uuid: ObjectId;
   bride_name: string;
   girl_name: string;
   boy_name: string;
   bride_code: string;
   bride_initial: string;
-  parents: ParentInterface[];
+  parents: ParentInterface;
   information?: WeddingInformationInterface
 }
 
@@ -33,7 +31,6 @@ export function createBrideWeddingInterface(
   createdWeddingInfo: WeddingInformationInterface
 ): BrideWeddingInfoInterface {
   const brideWeddingInfo: BrideWeddingInfoInterface = {
-    uuid: bride.uuid,
     bride_name: bride.bride_name,
     girl_name: bride.girl_name,
     boy_name: bride.boy_name,

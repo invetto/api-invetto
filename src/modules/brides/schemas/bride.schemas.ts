@@ -1,8 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, ObjectId } from 'mongoose';
+import { Document } from 'mongoose';
 import { BrideInterface } from '../interface/bride.interface';
 import { ParentInterface } from '../interface/parent.interface';
-import { Transform } from 'class-transformer';
 
 @Schema()
 export class Bride extends Document implements BrideInterface {

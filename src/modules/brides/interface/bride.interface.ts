@@ -1,4 +1,4 @@
-import { Document, ObjectId } from 'mongoose';
+import { Document } from 'mongoose';
 import { ParentInterface } from './parent.interface';
 import { WeddingInformationInterface } from 'src/modules/wedding_information/interface/wedding_information.interface';
 
