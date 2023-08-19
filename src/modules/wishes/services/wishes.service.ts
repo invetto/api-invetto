@@ -1,13 +1,10 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { CreateWishDto } from '../dto/create-wish.dto';
 import { WishDocument } from '../schemas/wish.schemas';
 import { Wish } from '../interfaces/wish.interface';
-
-import { plainToClass } from 'class-transformer';
-import { validate } from 'class-validator';
 
 @Injectable()
 export class WishesService {
@@ -20,6 +17,6 @@ export class WishesService {
   }
 
   async findAllByBride(bride: string): Promise<Wish[]> {
-    return this.wishModel.find({bride}).exec();
+    return this.wishModel.find({ bride }).exec();
   }
 }

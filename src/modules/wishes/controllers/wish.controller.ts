@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body, Query } from '@nestjs/common';
+import { Controller, Post, Get, Query } from '@nestjs/common';
 import { WishesService } from '../services/wishes.service';
 import { Wish } from '../interfaces/wish.interface';
 import { CreateWishDto } from '../dto/create-wish.dto';
