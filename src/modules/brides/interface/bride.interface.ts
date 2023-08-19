@@ -3,7 +3,6 @@ import { ParentInterface } from './parent.interface';
 import { WeddingInformationInterface } from 'src/modules/wedding_information/interface/wedding_information.interface';
 
 export interface BrideInterface extends Document {
-  uuid: ObjectId;
   bride_name: string;
   girl_name: string;
   boy_name: string;

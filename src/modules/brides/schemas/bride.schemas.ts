@@ -6,9 +6,6 @@ import { Transform } from 'class-transformer';
 
 @Schema()
 export class Bride extends Document implements BrideInterface {
-  @Transform(({ value }) => value.toString())
-  uuid: ObjectId;
-
   @Prop({ required: true })
   bride_name: string;
 

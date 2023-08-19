@@ -1,11 +1,8 @@
-import { IsString, ValidateNested, IsArray, IsUUID } from 'class-validator';
+import { IsString, ValidateNested, IsArray } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ParentInfoDto } from './create-parant-info.dto';
 
 export class CreateBrideDto {
-  @IsUUID()
-  uuid: string;
-
   @IsString()
   bride_name: string;
 
