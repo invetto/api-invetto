@@ -5,7 +5,7 @@ import { Model, ObjectId } from 'mongoose';
 import { BrideInterface } from '../interface/bride.interface';
 import { CreateBrideDto } from '../dto/create-bride.dto';
 
-import { hundleUuid, notFoundRespone } from 'src/utils/helper';
+import { hundleUuid } from '../../../utils/helper';
 import { Bride } from '../schemas/bride.schemas';
 
 

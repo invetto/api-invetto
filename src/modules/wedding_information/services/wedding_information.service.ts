@@ -5,7 +5,7 @@ import { Model } from 'mongoose';
 import { BrideWeddingInfoInterface, WeddingInformationInterface, createBrideWeddingInterface } from '../interface/wedding_information.interface';
 import { CreateWeddingInformationDto } from '../dto/create-wedding-information.dto';
 
-import { hundleUuid, notFoundRespone } from 'src/utils/helper';
+import { hundleUuid, notFoundRespone } from '../../../utils/helper';
 import { BridesService } from 'src/modules/brides/services/brides.service';
 import { WeddingInformation } from '../schemas/wedding_information.schemas';
 
