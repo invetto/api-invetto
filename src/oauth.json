@@ -1,0 +1,19 @@
+{
+  "web": {
+    "client_id": "1042911711470-hvhj3vqofm42kgf1sreb2oma8odj3f0v.apps.googleusercontent.com",
+    "project_id": "undangan-382506",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "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",
+    "redirect_uris": [
+      "http://localhost",
+      "https://api.invetto.id",
+      "http://localhost:3000"
+    ],
+    "javascript_origins": [
+      "http://localhost",
+      "https://api.invetto.id"
+    ]
+  }
+}

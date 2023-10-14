@@ -3,16 +3,22 @@ import { Type } from 'class-transformer';
 import { ParentInfoDto } from './create-parant-info.dto';
 
 export class CreateBrideDto {
+  // @IsString()
+  uuid: string;
+
   @IsString()
   bride_name: string;
 
   // @IsString()
   bride_code?: string;
 
-  @IsString()
+  // @IsString()
+  bride_initial: string;
+
+  // @IsString()
   girl_name: string;
 
-  @IsString()
+  // @IsString()
   boy_name: string;
 
   @ValidateNested({ each: true })

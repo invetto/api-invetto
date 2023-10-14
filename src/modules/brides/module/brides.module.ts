@@ -3,6 +3,7 @@ import { BridesService } from '../services/brides.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BridesController } from '../controllers/bride.controller';
 import { BrideSchema } from '../schemas/bride.schemas';
+import { BrideServiceV2 } from '../services/bride.v2.service';
 
 @Module({
   imports: [
@@ -14,8 +15,8 @@ import { BrideSchema } from '../schemas/bride.schemas';
     ])
   ],
   controllers: [BridesController],
-  providers: [BridesService],
-  exports: [BridesService]
+  providers: [BridesService, BrideServiceV2],
+  exports: [BridesService, BrideServiceV2]
 })
 export class BridesModule {
 

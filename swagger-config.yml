@@ -1,11 +1,161 @@
 swagger: "2.0"
 info:
-  title: "Api for Invetto.id"
-  description: "API documentation for Invetto.id"
+  title: "API for Invetto.id"
+  description: "API documentation for Invetto.id adadmakdiandkabsdajbb"
   version: "1.0"
-tags:
-  - name: bride
-    description: "Bride related operations"
+
 schemes:
   - http
 basePath: /
+definitions:
+  CreateBrideDto:
+    type: object
+    properties:
+      bride_name:
+        type: string
+      girl_name:
+        type: string
+      boy_name:
+        type: string
+      parents:
+        $ref: "#/definitions/ParentInfoDto"
+
+  BrideId:
+    # type: object
+    properties:
+      uuid:
+        type: string
+
+  CreateWeddingInformationDto:
+    type: object
+    properties:
+      wedding_akad:
+        type: string
+      wedding_akad_time:
+        type: string
+      wedding_resepsi:
+        type: string
+      wedding_resepsi_time:
+        type: string
+      wedding_resepsi_time_2:
+        type: string
+      wedding_location:
+        type: string
+      wedding_location_akad:
+        type: string
+      start_event:
+        type: number
+      end_event:
+        type: number
+      wedding_domicili:
+        type: string
+      brideId:
+        type: object
+        $ref: "#/definitions/BrideId"
+
+  ParentInfoDto:
+    type: object
+    properties:
+      mother_of_girl:
+        type: string
+      mother_of_boy:
+        type: string
+      father_of_girl:
+        type: string
+      father_of_boy:
+        type: string
+
+  AddressDto:
+    type: object
+    properties:
+      maps_address:
+        type: string
+      maps_link:
+        type: string
+      maps_embed:
+        type: string
+      brideId:
+        type: object
+        $ref: "#/definitions/BrideId"
+
+paths:
+  /v2/bride:
+    post:
+      tags:
+        - Brides
+      summary: Create a new bride
+      parameters:
+        - name: bride
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CreateBrideDto"
+      responses:
+        201:
+          description: Bride created successfully
+
+  /v2/bride/{brideCode}:
+    get:
+      tags:
+        - Brides
+      summary: Get bride by bride code
+      parameters:
+        - name: brideCode
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+
+  /v2/brides:
+    get:
+      tags:
+        - Brides
+      summary: Get list of brides
+      responses:
+        200:
+          description: Successful response
+
+  /v2/wedding-information:
+    post:
+      tags:
+        - Wedding Informations
+      summary: Create wedding information
+      parameters:
+        - name: weddingInformation
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CreateWeddingInformationDto"
+      responses:
+        201:
+          description: Wedding information created successfully
+
+  /v2/wedding-information/{id}:
+    get:
+      tags:
+        - Wedding Informations
+      summary: Get wedding information by uuid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+  /v2/address:
+    post:
+      tags:
+        - Address
+      summary: Create Address
+      parameters:
+        - name: address
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/AddressDto"
+      responses:
+        201:
+          description: Wedding information created successfully

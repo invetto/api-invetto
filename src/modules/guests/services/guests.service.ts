@@ -15,7 +15,7 @@ export class GuestService {
 
   async create(createGuestDto: CreateGuestDto): Promise<Guest> {
     const guest = plainToClass(CreateGuestDto, createGuestDto);
-    // console.log(guest)
+
     const errors = await validate(guest);
 
     if (errors.length > 0) {

@@ -4,7 +4,6 @@ import { WeddingInformationController } from '../controllers/wedding_information
 import { MongooseModule } from '@nestjs/mongoose';
 import { WeddingInformationSchema } from '../schemas/wedding_information.schemas';
 import { BridesModule } from 'src/modules/brides/module/brides.module';
-import { CustomValidationPipe } from '../../../utils/validation/custom-validation.pipe';
 
 @Module({
   imports: [
@@ -18,7 +17,6 @@ import { CustomValidationPipe } from '../../../utils/validation/custom-validatio
   ],
   providers: [
     WeddingInformationService,
-    // CustomValidationPipe
   ],
   controllers: [WeddingInformationController]
 })

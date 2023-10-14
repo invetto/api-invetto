@@ -1,0 +1,278 @@
+openapi: 3.0.0
+info:
+  title: API for Invetto.id
+  description: API documentation for Invetto.id
+  version: 1.0.0
+paths:
+  /bride:
+    post:
+      tags:
+        - Brides
+      summary: Create a new bride
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateBrideDto"
+      responses:
+        "201":
+          description: Bride created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BrideResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /bride/{brideCode}:
+    get:
+      tags:
+        - Brides
+      summary: Get bride by bride code
+      parameters:
+        - name: brideCode
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BrideResponse"
+        "404":
+          description: Bride not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /brides:
+    get:
+      tags:
+        - Brides
+      summary: Get list of brides
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BridesListResponse"
+  /wedding-information:
+    post:
+      tags:
+        - Wedding Informations
+      summary: Create wedding information
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateWeddingInformationDto"
+      responses:
+        "201":
+          description: Wedding information created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WeddingInformationCreatedResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /wedding-information/{id}:
+    get:
+      tags:
+        - Wedding Informations
+      summary: Get wedding information by uuid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WeddingInformationDetailsResponse"
+        "404":
+          description: Wedding information not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /address:
+    post:
+      tags:
+        - Address
+      summary: Create Address
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddressDto"
+      responses:
+        "201":
+          description: Address created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddressCreatedResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+servers:
+  - url: /v2
+components:
+  schemas:
+    CreateBrideDto:
+      type: object
+      properties:
+        bride_name:
+          type: string
+        girl_name:
+          type: string
+        boy_name:
+          type: string
+        parents:
+          $ref: "#/components/schemas/ParentInfoDto"
+    BrideId:
+      type: object
+      properties:
+        uuid:
+          type: string
+    BrideResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        bride:
+          $ref: "#/components/schemas/BrideDetailsResponse"
+    BrideDetailsResponse:
+      type: object
+      properties:
+        bride_name:
+          type: string
+        girl_name:
+          type: string
+        boy_name:
+          type: string
+        parents:
+          $ref: "#/components/schemas/ParentInfoDto"
+    BridesListResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        brides:
+          type: array
+          items:
+            $ref: "#/components/schemas/BrideDetailsResponse"
+    CreateWeddingInformationDto:
+      type: object
+      properties:
+        wedding_akad:
+          type: string
+        wedding_akad_time:
+          type: string
+        wedding_resepsi:
+          type: string
+        wedding_resepsi_time:
+          type: string
+        wedding_resepsi_time_2:
+          type: string
+        wedding_location:
+          type: string
+        wedding_location_akad:
+          type: string
+        start_event:
+          type: number
+        end_event:
+          type: number
+        wedding_domicili:
+          type: string
+        brideId:
+          $ref: "#/components/schemas/BrideId"
+    ParentInfoDto:
+      type: object
+      properties:
+        mother_of_girl:
+          type: string
+        mother_of_boy:
+          type: string
+        father_of_girl:
+          type: string
+        father_of_boy:
+          type: string
+    AddressDto:
+      type: object
+      properties:
+        maps_address:
+          type: string
+        maps_link:
+          type: string
+        maps_embed:
+          type: string
+        brideId:
+          $ref: "#/components/schemas/BrideId"
+    AddressCreatedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        address:
+          $ref: "#/components/schemas/AddressDto"
+    WeddingInformationCreatedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        wedding_information:
+          $ref: "#/components/schemas/CreateWeddingInformationDto"
+    WeddingInformationDetailsResponse:
+      type: object
+      properties:
+        wedding_akad:
+          type: string
+        wedding_akad_time:
+          type: string
+        wedding_resepsi:
+          type: string
+        wedding_resepsi_time:
+          type: string
+        wedding_resepsi_time_2:
+          type: string
+        wedding_location:
+          type: string
+        wedding_location_akad:
+          type: string
+        start_event:
+          type: number
+        end_event:
+          type: number
+        wedding_domicili:
+          type: string
+        brideId:
+          $ref: "#/components/schemas/BrideId"
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string

@@ -1,4 +1,4 @@
-import { Document, ObjectId, Schema } from 'mongoose';
+import { Document, ObjectId } from 'mongoose';
 import { BrideInterface } from 'src/modules/brides/interface/bride.interface';
 import { ParentInterface } from 'src/modules/brides/interface/parent.interface';
 
@@ -13,10 +13,12 @@ export interface WeddingInformationInterface extends Document {
   start_event: number;
   end_event: number;
   wedding_domicili: string;
-  bride: ObjectId
+  bride?: ObjectId
+  // brideId?: string
 }
 
 export interface BrideWeddingInfoInterface {
+  uuid: string
   bride_name: string;
   girl_name: string;
   boy_name: string;
@@ -31,6 +33,7 @@ export function createBrideWeddingInterface(
   createdWeddingInfo: WeddingInformationInterface
 ): BrideWeddingInfoInterface {
   const brideWeddingInfo: BrideWeddingInfoInterface = {
+    uuid: bride.uuid,
     bride_name: bride.bride_name,
     girl_name: bride.girl_name,
     boy_name: bride.boy_name,

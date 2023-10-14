@@ -2,7 +2,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 export function setupSwagger(app) {
   const options = new DocumentBuilder()
-    .setTitle('API Ivetto.id')
+    .setTitle('API for Invetto.id')
     .setDescription('API documentation for Invetto.id')
     .setVersion('1.0')
     .addTag('bride', 'Bride related operations')

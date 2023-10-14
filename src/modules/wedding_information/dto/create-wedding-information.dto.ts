@@ -36,5 +36,8 @@ export class CreateWeddingInformationDto {
   wedding_domicili: string;
 
   // @IsString()
-  bride: ObjectId;
+  bride?: ObjectId; //mongoose
+
+  @IsString()
+  brideId: string; //spreadsheet
 }

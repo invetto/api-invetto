@@ -1,5 +1,7 @@
 import { BadRequestException, HttpException } from "@nestjs/common"
+import axios from "axios";
 import * as uuid from 'uuid';
+// import fetch from 'node-fetch';
 
 export const successResponse = ({ data, message = 'success', statusCode = 200 }) => {
   return {
@@ -36,7 +38,6 @@ export function errorMessage(error: BadRequestException) {
 }
 
 export const notFoundRespone = (data = null, message = "Data Not Found", statusCode = 403,) => {
-  // const errorMessage = `data ${data} not found`;
   throw new HttpException(
     {
       success: false,
@@ -45,4 +46,30 @@ export const notFoundRespone = (data = null, message = "Data Not Found", statusC
     },
     statusCode
   );
-};
+}
+
+const headers = {
+  'Content-Type': 'application/json'
+}
+
+export const hundleApiPost = async ({ tableName, body, url }) => {
+  const response = await axios.post(url + "/tabs/" + tableName, body, {
+    headers: headers
+  });
+
+  return await response.data[0];
+}
+
+export const hundleApiGet = async ({ tableName, value, url, column }) => {
+  try {
+    const response = await axios.get(`${url}/tabs/${tableName}/${column}/${value}`);
+
+    if (response.data && response.data.length > 0) {
+      return response.data[0]; // Assuming you're expecting a single object
+    } else {
+      return null; // Handle the case where no data is found
+    }
+  } catch (error) {
+    throw error; // Rethrow the error for better error handling
+  }
+}

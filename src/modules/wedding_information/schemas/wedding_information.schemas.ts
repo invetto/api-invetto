@@ -6,7 +6,7 @@ import { Transform } from 'class-transformer';
 @Schema()
 export class WeddingInformation extends Document implements WeddingInformationInterface {
   @Transform(({ value }) => value.toString())
-  uuid: ObjectId;
+  uuid: string;
 
   @Prop({ required: true })
   wedding_akad: string;
@@ -43,7 +43,12 @@ export class WeddingInformation extends Document implements WeddingInformationIn
     ref: 'Bride',
     required: true,
   })
-  bride: MongooseSchema.Types.ObjectId;
+  bride?: MongooseSchema.Types.ObjectId;
+
+  @Prop({
+    required: true,
+  })
+  brideId?: string;
 
 }
 

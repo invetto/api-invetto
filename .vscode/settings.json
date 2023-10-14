@@ -1,5 +1,9 @@
 {
   "editor.cursorSmoothCaretAnimation": "explicit",
   "editor.cursorStyle": "line-thin",
-  "editor.minimap.autohide": true
+  "editor.minimap.autohide": true,
+  "yaml.schemas": {
+    "file:///Users/awahids/.vscode/extensions/atlassian.atlascode-3.0.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
+    "swaggerviewer:swagger": "file:///Users/awahids/Personal/invetto/api-invetto/swagger-config.yml"
+  }
 }
